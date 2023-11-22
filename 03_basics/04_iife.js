@@ -10,4 +10,20 @@
 (()=>{
     console.log("DB connected 2")
 })()
+/// UNDERSTANIND CALL STACK
+function one(){
+    two()
+    console.log("one")
+    
+}
+function two(){
+    three()
+    console.log("two")
+}
+function three(){
+    console.log("three")
+}
+one()
+two()
+three()
 
