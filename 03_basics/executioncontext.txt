@@ -1,0 +1,52 @@
+#JAVASCRIPT EXECUTION CONTEXT-whenever we create a javascript file how is it executed by javascript
+
+--whenever we give a code to javascript a "global execution context" is made whis is referred to "this"
+--for browser this global execution context is different( it is window) than that of nodejs
+--a "functional execution context" is also created
+--javascript runs a program in two phases
+    --memory creation phase and execution phase
+
+--------------------------------------------
+lets consider the following js code
+----------------------------------------
+        1. val1=10
+        2. val2=20
+        3. let func=function(num1,num2){
+        4.  let total=num1+num2
+        5   return total
+        6. }
+        7. let result1=func(val1,val2)
+        8. let result2=func(10,2)
+---------------------------------------
+for the above code following phases will be there
+
+1-- global execution context will be created 
+
+2-- memory creation phase
+    val1=undefined
+    val2=undefined
+    func=definition
+    result1=undefined
+    result2=undefined
+
+3-- Execution phase
+    for line 1-val1 <- 10
+    for line 2-val2 <- 20
+    for line 7 - addnum() <- for this function new variable environment and exececution thread will be created
+                         again memory phase and execution phase will be there and it will be created
+                         everytime the function is called and deleted after the execution of the function for that call
+
+              1--memory creation phase
+                val1=undefined
+                val2=undefined
+                total=undefined
+
+              2--Execution phase
+                val1 <- 10
+                val2 <- 20
+                total <- 30
+                total will be returned to the global execution context
+                this sandbox will be deleted
+    
+    for line 8 - again same process will be there as for line 7
+    
